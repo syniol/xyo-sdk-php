@@ -1,0 +1,23 @@
+{
+  "name": "xyo/example",
+  "description": "",
+  "type": "library",
+  "require": {
+    "php": ">=7.1",
+    "xyo/local": "../src",
+    "xyo/sdk": "0.0.1"
+  },
+  "license": "Apache-2",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Syniol Limited",
+      "email": "hadi@syniol.com"
+    }
+  ],
+  "minimum-stability": "dev"
+}
