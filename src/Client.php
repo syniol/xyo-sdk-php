@@ -12,7 +12,8 @@ class Client
      */
     private $clientConfig;
 
-    public function __construct(ClientConfig $clientConfig) {
+    public function __construct(ClientConfig $clientConfig)
+    {
         $this->clientConfig = $clientConfig;
     }
 

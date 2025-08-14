@@ -16,12 +16,14 @@ class ClientConfig {
      */
     private $httpClient;
 
-    public function __construct(string $apiKey) {
+    public function __construct(string $apiKey)
+    {
         $this->apiKey = $apiKey;
         $this->httpClient = new HttpClient();
     }
 
-    public function getApiKey() : string {
+    public function getApiKey() : string
+    {
         return $this->apiKey;
     }
 
