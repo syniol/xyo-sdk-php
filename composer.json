@@ -3,12 +3,17 @@
   "description": "XYO Financial Official SDK for PHP",
   "type": "library",
   "require": {
-    "php": "7.0.33"
+    "php": ">=7.0.33",
+    "guzzlehttp/guzzle": "~6.5.8"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.2"
   },
   "license": "Apache-2",
   "autoload": {
     "psr-4": {
-      "Xyo\\Sdk\\": "src/"
+      "Xyo\\Sdk\\": "src/",
+      "Tests\\": "tests/"
     }
   },
   "authors": [
