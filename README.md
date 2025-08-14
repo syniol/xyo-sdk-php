@@ -1,5 +1,7 @@
 # XYO Financial SDK for PHP
-Official SDK of XYO Financial for PHP Programming Language.
+![workflow](https://github.com/syniol/xyo-sdk-php/actions/workflows/makefile.yml/badge.svg)
+
+Official SDK of XYO Financial for PHP 7.x+ Programming Language.
 
 
 #### Credits

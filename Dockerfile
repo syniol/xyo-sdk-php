@@ -1,10 +1,29 @@
-FROM php:7.0-alpine
+FROM php:7.0.33-alpine
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-    php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }" \
-    php composer-setup.php \
-    php -r "unlink('composer-setup.php');"
+RUN apk add --update \
+    git \
+    unzip \
+    libzip-dev \
+    libgcc \
+    libbz2 \
+    bzip2-dev \
+    autoconf \
+    make \
+    zlib \
+    zlib-dev \
+    g++ \
+    && docker-php-ext-install bz2 \
+    && docker-php-ext-install zip
 
-RUN composer.phar /usr/local/bin/composer
+# Installing curl (PHP Package Management)
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && composer --version
 
-RUN composer --version
+# PHP 7.x is used compatible xdebug is 2.7.x
+# https://xdebug.org/docs/compat
+RUN pecl install xdebug-2.7.2 \
+    && echo "zend_extension=xdebug.so" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+RUN mkdir -p /usr/local/xyo/sdk
+
+WORKDIR /usr/local/xyo/sdk

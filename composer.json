@@ -1,0 +1,21 @@
+{
+  "name": "xyo/sdk",
+  "description": "XYO Financial Official SDK for PHP",
+  "type": "library",
+  "require": {
+    "php": "7.0.33"
+  },
+  "license": "Apache-2",
+  "autoload": {
+    "psr-4": {
+      "Xyo\\Sdk\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Syniol Limited",
+      "email": "hadi@syniol.com"
+    }
+  ],
+  "minimum-stability": "stable"
+}
