@@ -10,7 +10,6 @@ use XYO\SDK\Enrichment\dto\EnrichmentCollectionStatusResponse;
 
 class EnrichmentService implements Enrichment
 {
-
     /**
      * @var ClientConfig
      */

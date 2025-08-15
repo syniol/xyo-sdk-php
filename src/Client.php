@@ -25,6 +25,15 @@ use XYO\SDK\Enrichment\dto\EnrichTransactionCollectionResponse;
  * echo $enrichmentResult->merchant;
  * echo $enrichmentResult->description;
  *
+ *
+ * $enrichmentCollectionResult = $client->enrichTransactionCollection([
+ *     new EnrichmentRequest("Costa PickUp", "GB"),
+ *     new EnrichmentRequest("STRBUKS GREENWICH", "GB")
+ * ]);
+ *
+ * echo $enrichmentCollectionResult->id;
+ * echo $enrichmentCollectionResult->link;
+ *
  */
 class Client implements Enrichment
 {

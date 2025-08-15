@@ -12,7 +12,7 @@ class ClientConfig {
     private $apiKey;
 
     /**
-     * @var Client
+     * @var HttpClient
      */
     private $httpClient;
 
