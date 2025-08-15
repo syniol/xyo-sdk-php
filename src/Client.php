@@ -4,17 +4,31 @@ namespace XYO\SDK;
 
 use \Exception;
 use XYO\SDK\ClientConfig;
+use XYO\SDK\Enrichment\Enrichment;
+use XYO\SDK\Enrichment\EnrichmentService;
+use XYO\SDK\Enrichment\dto\EnrichmentCollectionStatusResponse;
+use XYO\SDK\Enrichment\dto\EnrichmentRequest;
+use XYO\SDK\Enrichment\dto\EnrichmentResponse;
+use XYO\SDK\Enrichment\dto\EnrichTransactionCollectionResponse;
 
-class Client
+class Client implements Enrichment
 {
     /**
      * @var ClientConfig
      */
     private $clientConfig;
 
+    /**
+     * @var Enrichment
+     */
+    private $enrichment;
+
     public function __construct(ClientConfig $clientConfig)
     {
         $this->clientConfig = $clientConfig;
+
+        // All Services such as enrichment should implement interface and assigned here
+        $this->enrichment = new EnrichmentService($clientConfig);
     }
 
     /**
@@ -38,5 +52,20 @@ class Client
         }
 
         return true;
+    }
+
+    public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
+    {
+        return $this->enrichment->enrichTransaction($req);
+    }
+
+    public function enrichTransactionCollection(EnrichmentRequest $req): EnrichTransactionCollectionResponse
+    {
+        return $this->enrichment->enrichTransactionCollection($req);
+    }
+
+    public function enrichTransactionCollectionStatus(string $id): EnrichmentCollectionStatusResponse
+    {
+        return $this->enrichment->enrichTransactionCollectionStatus($id);
     }
 }
