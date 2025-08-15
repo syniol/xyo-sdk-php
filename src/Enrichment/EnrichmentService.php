@@ -33,7 +33,7 @@ class EnrichmentService implements Enrichment
         );
     }
 
-    public function enrichTransactionCollection(EnrichmentRequest $req): EnrichTransactionCollectionResponse
+    public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
     {
         return new EnrichTransactionCollectionResponse();
     }

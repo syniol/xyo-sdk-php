@@ -54,16 +54,28 @@ class Client implements Enrichment
         return true;
     }
 
+    /**
+     * @param EnrichmentRequest $req
+     * @return EnrichmentResponse
+     */
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
     {
         return $this->enrichment->enrichTransaction($req);
     }
 
-    public function enrichTransactionCollection(EnrichmentRequest $req): EnrichTransactionCollectionResponse
+    /**
+     * @param array $req
+     * @return EnrichTransactionCollectionResponse
+     */
+    public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
     {
         return $this->enrichment->enrichTransactionCollection($req);
     }
 
+    /**
+     * @param string $id
+     * @return EnrichmentCollectionStatusResponse
+     */
     public function enrichTransactionCollectionStatus(string $id): EnrichmentCollectionStatusResponse
     {
         return $this->enrichment->enrichTransactionCollectionStatus($id);

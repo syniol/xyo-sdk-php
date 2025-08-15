@@ -8,9 +8,21 @@ use XYO\SDK\Enrichment\dto\EnrichmentResponse;
 use XYO\SDK\Enrichment\dto\EnrichTransactionCollectionResponse;
 
 interface Enrichment {
+    /**
+     * @param EnrichmentRequest $req
+     * @return EnrichmentResponse
+     */
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse;
 
-    public function enrichTransactionCollection(EnrichmentRequest $req): EnrichTransactionCollectionResponse;
+    /**
+     * @param EnrichmentRequest[] $req
+     * @return EnrichTransactionCollectionResponse
+     */
+    public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse;
 
+    /**
+     * @param string $id
+     * @return EnrichmentCollectionStatusResponse
+     */
     public function enrichTransactionCollectionStatus(string $id): EnrichmentCollectionStatusResponse;
 }

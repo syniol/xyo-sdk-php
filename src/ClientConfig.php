@@ -27,7 +27,7 @@ class ClientConfig {
         return $this->apiKey;
     }
 
-    public function getHttpClient(): Client
+    public function getHttpClient(): HttpClient
     {
         return $this->httpClient;
     }
