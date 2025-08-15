@@ -11,6 +11,21 @@ use XYO\SDK\Enrichment\dto\EnrichmentRequest;
 use XYO\SDK\Enrichment\dto\EnrichmentResponse;
 use XYO\SDK\Enrichment\dto\EnrichTransactionCollectionResponse;
 
+/**
+ * Client is an entry point to use the SDK. You need a valid API Key obtainable from https://xyo.financial/dashboard
+ * e.g.
+ *
+ * use XYO\SDK\Client;
+ * use XYO\SDK\ClientConfig;
+ * use XYO\SDK\Enrichment\dto\EnrichmentRequest;
+ *
+ * $client = new Client(new ClientConfig("YourAPIKeyFromXYO.FinancialDashboard"))
+ * $enrichmentResult = $client->enrichTransaction(new EnrichmentRequest("Costa PickUp", "GB"));
+ *
+ * echo $enrichmentResult->merchant;
+ * echo $enrichmentResult->description;
+ *
+ */
 class Client implements Enrichment
 {
     /**
@@ -33,6 +48,7 @@ class Client implements Enrichment
 
     /**
      * @throws Exception
+     * @return boolean
      */
     public function getHeath(): bool
     {
@@ -48,6 +64,7 @@ class Client implements Enrichment
         );
 
         if ($resp->getStatusCode() !== 200) {
+            // todo: action 3 Vs 4-5 JSON vs text
             throw new Exception(\GuzzleHttp\json_decode($resp->getBody()->getContents()));
         }
 
@@ -64,7 +81,7 @@ class Client implements Enrichment
     }
 
     /**
-     * @param array $req
+     * @param EnrichmentRequest[] $req
      * @return EnrichTransactionCollectionResponse
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
