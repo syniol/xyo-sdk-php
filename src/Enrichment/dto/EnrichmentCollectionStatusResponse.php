@@ -3,9 +3,24 @@
 namespace XYO\SDK\Enrichment\dto;
 class EnrichmentCollectionStatusResponse
 {
-    public static $EnrichmentCollectionStatusReady =  "READY";
-	public static $EnrichmentCollectionStatusFailure = "FAILED";
+    private static $EnrichmentCollectionStatusReady =  "READY";
+	private static $EnrichmentCollectionStatusFailure = "FAILED";
 	private static $EnrichmentCollectionStatusPending = "PENDING";
+
+    public static function getEnrichmentCollectionStatusReady(): string
+    {
+        return self::$EnrichmentCollectionStatusReady;
+    }
+
+    public static function getEnrichmentCollectionStatusFailure(): string
+    {
+        return self::$EnrichmentCollectionStatusFailure;
+    }
+
+    public static function getEnrichmentCollectionStatusPending(): string
+    {
+        return self::$EnrichmentCollectionStatusPending;
+    }
 
     /**
      * @var string
