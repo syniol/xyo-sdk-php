@@ -57,7 +57,6 @@ class Client implements Enrichment
 
     /**
      * @throws Exception
-     * @return boolean
      */
     public function getHeath(): bool
     {
@@ -77,8 +76,6 @@ class Client implements Enrichment
     }
 
     /**
-     * @param EnrichmentRequest $req
-     * @return EnrichmentResponse
      * @throws Exception
      */
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
@@ -87,8 +84,6 @@ class Client implements Enrichment
     }
 
     /**
-     * @param EnrichmentRequest[] $req
-     * @return EnrichTransactionCollectionResponse
      * @throws Exception
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
@@ -97,8 +92,6 @@ class Client implements Enrichment
     }
 
     /**
-     * @param string $id
-     * @return EnrichmentCollectionStatusResponse
      * @throws Exception
      */
     public function enrichTransactionCollectionStatus(string $id): EnrichmentCollectionStatusResponse
