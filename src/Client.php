@@ -62,13 +62,9 @@ class Client implements Enrichment
     public function getHeath(): bool
     {
         $resp = $this->clientConfig->getHttpClient()->get(
-            "https://api.xyo.financial/healthz",
+            sprintf("%s/healthz", ClientConfig::getApiPath()),
             [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Accept' => 'application/json',
-                    'Authorization' => sprintf('Bearer %s', $this->clientConfig->getApiKey())
-                ],
+                'headers' => $this->clientConfig->getHttpClientHeaders(),
             ]
         );
 
@@ -83,6 +79,7 @@ class Client implements Enrichment
     /**
      * @param EnrichmentRequest $req
      * @return EnrichmentResponse
+     * @throws Exception
      */
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
     {
@@ -92,6 +89,7 @@ class Client implements Enrichment
     /**
      * @param EnrichmentRequest[] $req
      * @return EnrichTransactionCollectionResponse
+     * @throws Exception
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
     {
@@ -101,6 +99,7 @@ class Client implements Enrichment
     /**
      * @param string $id
      * @return EnrichmentCollectionStatusResponse
+     * @throws Exception
      */
     public function enrichTransactionCollectionStatus(string $id): EnrichmentCollectionStatusResponse
     {

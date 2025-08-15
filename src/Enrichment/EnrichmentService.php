@@ -2,6 +2,7 @@
 
 namespace XYO\SDK\Enrichment;
 
+use Exception;
 use XYO\SDK\ClientConfig;
 use XYO\SDK\Enrichment\dto\EnrichmentRequest;
 use XYO\SDK\Enrichment\dto\EnrichmentResponse;
@@ -22,23 +23,56 @@ class EnrichmentService implements Enrichment
 
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
     {
-        return new EnrichmentResponse(
-            "",
-            "",
-            "",
+        $resp = $this->clientConfig->getHttpClient()->post(
+            sprintf("%s/v1/ai/finance/enrichment/transaction", ClientConfig::getApiPath()),
             [
-                "blah",
+                'headers' => $this->clientConfig->getHttpClientHeaders(),
             ]
         );
+
+        if ($resp->getStatusCode() !== 200) {
+            // todo: action 3 Vs 4-5 JSON vs text
+            throw new Exception(\GuzzleHttp\json_decode($resp->getBody()->getContents()));
+        }
+
+        return new EnrichmentResponse();
     }
 
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
     {
+        $resp = $this->clientConfig->getHttpClient()->post(
+            sprintf("%s/v1/ai/finance/enrichment/transactions", ClientConfig::getApiPath()),
+            [
+                'headers' => $this->clientConfig->getHttpClientHeaders(),
+            ]
+        );
+
+        if ($resp->getStatusCode() !== 200) {
+            // todo: action 3 Vs 4-5 JSON vs text
+            throw new Exception(\GuzzleHttp\json_decode($resp->getBody()->getContents()));
+        }
+
         return new EnrichTransactionCollectionResponse();
     }
 
     public function enrichTransactionCollectionStatus(string $id): EnrichmentCollectionStatusResponse
     {
+        $resp = $this->clientConfig->getHttpClient()->get(
+            sprintf(
+                "%s/v1/ai/finance/enrichment/transactions/status/%s",
+                ClientConfig::getApiPath(),
+                $id
+            ),
+            [
+                'headers' => $this->clientConfig->getHttpClientHeaders(),
+            ]
+        );
+
+        if ($resp->getStatusCode() !== 200) {
+            // todo: action 3 Vs 4-5 JSON vs text
+            throw new Exception(\GuzzleHttp\json_decode($resp->getBody()->getContents()));
+        }
+
         return new EnrichmentCollectionStatusResponse();
     }
 }
