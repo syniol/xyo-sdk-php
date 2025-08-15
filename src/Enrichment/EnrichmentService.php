@@ -21,6 +21,9 @@ class EnrichmentService implements Enrichment
         $this->clientConfig = $clientConfig;
     }
 
+    /**
+     * @throws Exception
+     */
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
     {
         $resp = $this->clientConfig->getHttpClient()->post(
@@ -38,6 +41,11 @@ class EnrichmentService implements Enrichment
         return new EnrichmentResponse();
     }
 
+
+    /**
+     * @param EnrichmentResponse[] $req
+     * @throws Exception
+     */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
     {
         $resp = $this->clientConfig->getHttpClient()->post(
@@ -55,6 +63,9 @@ class EnrichmentService implements Enrichment
         return new EnrichTransactionCollectionResponse();
     }
 
+    /**
+     * @throws Exception
+     */
     public function enrichTransactionCollectionStatus(string $id): EnrichmentCollectionStatusResponse
     {
         $resp = $this->clientConfig->getHttpClient()->get(

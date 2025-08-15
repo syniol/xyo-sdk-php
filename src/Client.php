@@ -84,6 +84,7 @@ class Client implements Enrichment
     }
 
     /**
+     * @param EnrichmentResponse[] $req
      * @throws Exception
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
