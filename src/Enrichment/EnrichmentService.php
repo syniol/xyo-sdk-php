@@ -2,7 +2,7 @@
 
 namespace XYO\SDK\Enrichment;
 
-use Exception;
+use XYO\SDK\ClientException;
 use XYO\SDK\ClientConfig;
 use XYO\SDK\Enrichment\dto\EnrichmentRequest;
 use XYO\SDK\Enrichment\dto\EnrichmentResponse;
@@ -22,7 +22,7 @@ class EnrichmentService implements Enrichment
     }
 
     /**
-     * @throws Exception
+     * @throws ClientException
      */
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
     {
@@ -34,9 +34,12 @@ class EnrichmentService implements Enrichment
             ]
         );
 
-        if ($resp->getStatusCode() !== 200) {
-            // todo: action 3 Vs 4-5 JSON vs text
-            throw new Exception(\GuzzleHttp\json_decode($resp->getBody()->getContents()));
+        $httpStatusCode = $resp->getStatusCode();
+        if ($httpStatusCode) {
+            throw ClientException::ExceptionFromHttpStatusCode(
+                $resp->getStatusCode(),
+                $resp->getBody()->getContents()
+            );
         }
 
         $responseBody = \GuzzleHttp\json_decode($resp->getBody()->getContents());
@@ -49,10 +52,9 @@ class EnrichmentService implements Enrichment
         );
     }
 
-
     /**
      * @param EnrichmentResponse[] $req
-     * @throws Exception
+     * @throws ClientException
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
     {
@@ -64,9 +66,12 @@ class EnrichmentService implements Enrichment
             ]
         );
 
-        if ($resp->getStatusCode() !== 200) {
-            // todo: action 3 Vs 4-5 JSON vs text
-            throw new Exception(\GuzzleHttp\json_decode($resp->getBody()->getContents()));
+        $httpStatusCode = $resp->getStatusCode();
+        if ($httpStatusCode) {
+            throw ClientException::ExceptionFromHttpStatusCode(
+                $resp->getStatusCode(),
+                $resp->getBody()->getContents()
+            );
         }
 
         $responseBody = \GuzzleHttp\json_decode($resp->getBody()->getContents());
@@ -78,7 +83,7 @@ class EnrichmentService implements Enrichment
     }
 
     /**
-     * @throws Exception
+     * @throws ClientException
      */
     public function enrichTransactionCollectionStatus(string $id): EnrichmentCollectionStatusResponse
     {
@@ -93,9 +98,12 @@ class EnrichmentService implements Enrichment
             ]
         );
 
-        if ($resp->getStatusCode() !== 200) {
-            // todo: action 3 Vs 4-5 JSON vs text
-            throw new Exception(\GuzzleHttp\json_decode($resp->getBody()->getContents()));
+        $httpStatusCode = $resp->getStatusCode();
+        if ($httpStatusCode) {
+            throw ClientException::ExceptionFromHttpStatusCode(
+                $resp->getStatusCode(),
+                $resp->getBody()->getContents()
+            );
         }
 
         $responseBody = \GuzzleHttp\json_decode($resp->getBody()->getContents());

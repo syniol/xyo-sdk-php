@@ -42,11 +42,6 @@ class ClientConfig
         return self::$ApiPath;
     }
 
-    public function getApiKey() : string
-    {
-        return $this->apiKey;
-    }
-
     public function getHttpClient(): HttpClient
     {
         return $this->httpClient;
