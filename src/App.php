@@ -2,7 +2,7 @@
 require 'vendor/autoload.php';
 
 use XYO\SDK\Client;
-use \XYO\SDK\ClientConfig;
+use XYO\SDK\ClientConfig;
 
 
 $client = new Client(new ClientConfig("YourAPIKeyShouldBePlacedAsParameterHere"));
