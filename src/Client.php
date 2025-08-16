@@ -66,9 +66,9 @@ class Client implements Enrichment
         );
 
         $httpStatusCode = $resp->getStatusCode();
-        if ($httpStatusCode) {
+        if ($httpStatusCode !== 200) {
             throw ClientException::ExceptionFromHttpStatusCode(
-                $resp->getStatusCode(),
+                $httpStatusCode,
                 $resp->getBody()->getContents()
             );
         }

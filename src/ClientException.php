@@ -20,7 +20,9 @@ class ClientException extends Exception
         if ($code > 400 && $code < 500) {
             $errorResponse = GuzzleHttp\json_decode($content, true);
 
-            return new self(json_encode($errorResponse['errors']), $code);
+            if (isset($errorResponse['errors'])) {
+                return new self(json_encode($errorResponse['errors']), $code);
+            }
         }
 
         return new self($content, $code);
