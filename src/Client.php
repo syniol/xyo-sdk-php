@@ -3,7 +3,6 @@
 namespace XYO\SDK;
 
 use \Exception;
-use XYO\SDK\ClientConfig;
 use XYO\SDK\Enrichment\Enrichment;
 use XYO\SDK\Enrichment\EnrichmentService;
 use XYO\SDK\Enrichment\dto\EnrichmentCollectionStatusResponse;
@@ -17,7 +16,7 @@ use XYO\SDK\Enrichment\dto\EnrichTransactionCollectionResponse;
  *
  * use XYO\SDK\Client;
  * use XYO\SDK\ClientConfig;
- * use XYO\SDK\Enrichment\dto\EnrichmentRequest;
+ * use XYO\SDK\Enrichment\DTO\EnrichmentRequest;
  *
  * $client = new Client(new ClientConfig("YourAPIKeyFromXYO.FinancialDashboard"))
  * $enrichmentResult = $client->enrichTransaction(new EnrichmentRequest("Costa PickUp", "GB"));

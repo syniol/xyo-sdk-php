@@ -2,7 +2,6 @@
 
 namespace XYO\SDK;
 
-use Exception;
 use GuzzleHttp\Client as HttpClient;
 
 class ClientConfig

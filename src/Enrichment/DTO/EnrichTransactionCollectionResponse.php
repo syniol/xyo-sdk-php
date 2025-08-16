@@ -1,6 +1,6 @@
 <?php
 
-namespace XYO\SDK\Enrichment\dto;
+namespace XYO\SDK\Enrichment\DTO;
 
 class EnrichTransactionCollectionResponse
 {
