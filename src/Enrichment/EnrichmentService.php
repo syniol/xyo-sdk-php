@@ -2,6 +2,7 @@
 
 namespace XYO\SDK\Enrichment;
 
+use GuzzleHttp;
 use XYO\SDK\ClientException;
 use XYO\SDK\ClientConfig;
 use XYO\SDK\Enrichment\dto\EnrichmentRequest;
@@ -30,7 +31,7 @@ class EnrichmentService implements Enrichment
             sprintf("%s/v1/ai/finance/enrichment/transaction", ClientConfig::getApiPath()),
             [
                 'headers' => $this->clientConfig->getHttpClientHeaders(),
-                'body' => \GuzzleHttp\json_encode($req)
+                'body' => GuzzleHttp\json_encode($req)
             ]
         );
 
@@ -42,7 +43,7 @@ class EnrichmentService implements Enrichment
             );
         }
 
-        $responseBody = \GuzzleHttp\json_decode($resp->getBody()->getContents());
+        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents());
 
         return new EnrichmentResponse(
             $responseBody['merchant'],
@@ -62,7 +63,7 @@ class EnrichmentService implements Enrichment
             sprintf("%s/v1/ai/finance/enrichment/transactions", ClientConfig::getApiPath()),
             [
                 'headers' => $this->clientConfig->getHttpClientHeaders(),
-                'body' => \GuzzleHttp\json_encode($req)
+                'body' => GuzzleHttp\json_encode($req)
             ]
         );
 
@@ -74,7 +75,7 @@ class EnrichmentService implements Enrichment
             );
         }
 
-        $responseBody = \GuzzleHttp\json_decode($resp->getBody()->getContents());
+        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents());
 
         return new EnrichTransactionCollectionResponse(
             $responseBody['id'],
@@ -106,7 +107,7 @@ class EnrichmentService implements Enrichment
             );
         }
 
-        $responseBody = \GuzzleHttp\json_decode($resp->getBody()->getContents());
+        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents());
 
         return new EnrichmentCollectionStatusResponse($responseBody['status']);
     }
