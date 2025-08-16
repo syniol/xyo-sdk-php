@@ -8,7 +8,8 @@ use XYO\SDK\Enrichment\dto\EnrichmentRequest;
 use XYO\SDK\Enrichment\dto\EnrichmentResponse;
 use XYO\SDK\Enrichment\dto\EnrichTransactionCollectionResponse;
 
-interface Enrichment {
+interface Enrichment
+{
     /**
      * @throws Exception
      */

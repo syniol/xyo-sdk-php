@@ -13,7 +13,6 @@ class EnrichmentRequest
      */
     private $countryCode;
 
-
     /**
      * @param string $content
      * @param string $countryCode

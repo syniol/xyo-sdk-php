@@ -30,6 +30,7 @@ class EnrichmentService implements Enrichment
             sprintf("%s/v1/ai/finance/enrichment/transaction", ClientConfig::getApiPath()),
             [
                 'headers' => $this->clientConfig->getHttpClientHeaders(),
+                'body' => \GuzzleHttp\json_encode($req)
             ]
         );
 
@@ -38,7 +39,14 @@ class EnrichmentService implements Enrichment
             throw new Exception(\GuzzleHttp\json_decode($resp->getBody()->getContents()));
         }
 
-        return new EnrichmentResponse();
+        $responseBody = \GuzzleHttp\json_decode($resp->getBody()->getContents());
+
+        return new EnrichmentResponse(
+            $responseBody['merchant'],
+            $responseBody['description'],
+            $responseBody['logo'],
+            $responseBody['categories']
+        );
     }
 
 
@@ -52,6 +60,7 @@ class EnrichmentService implements Enrichment
             sprintf("%s/v1/ai/finance/enrichment/transactions", ClientConfig::getApiPath()),
             [
                 'headers' => $this->clientConfig->getHttpClientHeaders(),
+                'body' => \GuzzleHttp\json_encode($req)
             ]
         );
 
@@ -60,7 +69,12 @@ class EnrichmentService implements Enrichment
             throw new Exception(\GuzzleHttp\json_decode($resp->getBody()->getContents()));
         }
 
-        return new EnrichTransactionCollectionResponse();
+        $responseBody = \GuzzleHttp\json_decode($resp->getBody()->getContents());
+
+        return new EnrichTransactionCollectionResponse(
+            $responseBody['id'],
+            $responseBody['link']
+        );
     }
 
     /**
@@ -84,6 +98,8 @@ class EnrichmentService implements Enrichment
             throw new Exception(\GuzzleHttp\json_decode($resp->getBody()->getContents()));
         }
 
-        return new EnrichmentCollectionStatusResponse();
+        $responseBody = \GuzzleHttp\json_decode($resp->getBody()->getContents());
+
+        return new EnrichmentCollectionStatusResponse($responseBody['status']);
     }
 }
