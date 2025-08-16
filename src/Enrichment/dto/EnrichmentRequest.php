@@ -6,12 +6,12 @@ class EnrichmentRequest
     /**
      * @var string
      */
-    private $content;
+    public $content;
 
     /**
      * @var string
      */
-    private $countryCode;
+    public $countryCode;
 
     /**
      * @param string $content
@@ -21,15 +21,5 @@ class EnrichmentRequest
     {
         $this->content = $content;
         $this->countryCode = $countryCode;
-    }
-
-    public function getContent(): string
-    {
-        return $this->content;
-    }
-
-    public function getCountryCode(): string
-    {
-        return $this->countryCode;
     }
 }

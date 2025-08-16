@@ -7,22 +7,22 @@ class EnrichmentResponse
     /**
      * @var string
      */
-    private $merchant;
+    public $merchant;
 
     /**
      * @var string
      */
-    private $description;
+    public $description;
 
     /**
      * @var string[]
      */
-    private $categories;
+    public $categories;
 
     /**
      * @var string
      */
-    private $logo;
+    public $logo;
 
     /**
      * @param string $merchant
@@ -36,25 +36,5 @@ class EnrichmentResponse
         $this->description = $description;
         $this->logo = $logo;
         $this->categories = $categories;
-    }
-
-    public function getMerchant(): string
-    {
-        return $this->merchant;
-    }
-
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-
-    public function getCategories(): array
-    {
-        return $this->categories;
-    }
-
-    public function getLogo(): string
-    {
-        return $this->logo;
     }
 }
