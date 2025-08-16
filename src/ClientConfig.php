@@ -33,7 +33,7 @@ class ClientConfig
         $this->httpClientHeaders = [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-            'Authorization' => sprintf('Bearer %s', $apiKey)
+            'Authorization' => sprintf('Bearer %s', $this->apiKey)
         ];
     }
 
