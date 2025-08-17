@@ -5,10 +5,10 @@ namespace XYO\SDK\Enrichment;
 use GuzzleHttp;
 use XYO\SDK\ClientException;
 use XYO\SDK\ClientConfig;
-use XYO\SDK\Enrichment\dto\EnrichmentRequest;
-use XYO\SDK\Enrichment\dto\EnrichmentResponse;
-use XYO\SDK\Enrichment\dto\EnrichTransactionCollectionResponse;
-use XYO\SDK\Enrichment\dto\EnrichmentCollectionStatusResponse;
+use XYO\SDK\Enrichment\DTO\EnrichmentRequest;
+use XYO\SDK\Enrichment\DTO\EnrichmentResponse;
+use XYO\SDK\Enrichment\DTO\EnrichTransactionCollectionResponse;
+use XYO\SDK\Enrichment\DTO\EnrichmentCollectionStatusResponse;
 
 class EnrichmentService implements Enrichment
 {

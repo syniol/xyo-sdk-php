@@ -4,10 +4,10 @@ namespace XYO\SDK;
 
 use XYO\SDK\Enrichment\Enrichment;
 use XYO\SDK\Enrichment\EnrichmentService;
-use XYO\SDK\Enrichment\dto\EnrichmentCollectionStatusResponse;
-use XYO\SDK\Enrichment\dto\EnrichmentRequest;
-use XYO\SDK\Enrichment\dto\EnrichmentResponse;
-use XYO\SDK\Enrichment\dto\EnrichTransactionCollectionResponse;
+use XYO\SDK\Enrichment\DTO\EnrichmentCollectionStatusResponse;
+use XYO\SDK\Enrichment\DTO\EnrichmentRequest;
+use XYO\SDK\Enrichment\DTO\EnrichmentResponse;
+use XYO\SDK\Enrichment\DTO\EnrichTransactionCollectionResponse;
 
 /**
  * Client is an entry point to use the SDK. You need a valid API Key obtainable from https://xyo.financial/dashboard

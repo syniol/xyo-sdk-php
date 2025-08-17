@@ -27,3 +27,7 @@ RUN pecl install xdebug-2.7.2 \
 RUN mkdir -p /usr/local/xyo/sdk
 
 WORKDIR /usr/local/xyo/sdk
+
+COPY . /usr/local/xyo/sdk/
+
+RUN composer test

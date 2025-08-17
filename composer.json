@@ -3,6 +3,15 @@
   "version": "0.0.1",
   "description": "XYO Financial Official SDK for PHP",
   "type": "library",
+  "scripts": {
+    "test": [
+      "@composer install",
+      "phpunit ./Tests --no-coverage"
+    ]
+  },
+  "scripts-descriptions": {
+    "test": "Runs all the tests placed inside the 'Tests' folder"
+  },
   "require": {
     "php": ">=7.1.33",
     "guzzlehttp/guzzle": "~6.5.8"
