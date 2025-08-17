@@ -6,7 +6,7 @@
   "scripts": {
     "test": [
       "@composer install",
-      "phpunit ./Tests --no-coverage"
+      "phpunit ./tests --no-coverage"
     ]
   },
   "scripts-descriptions": {
