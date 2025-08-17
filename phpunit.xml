@@ -13,10 +13,10 @@
 
     <testsuites>
         <testsuite name="Main">
-            <directory>Tests/</directory>
+            <directory>tests/</directory>
         </testsuite>
         <testsuite name="DTO">
-            <directory>Tests/DTO</directory>
+            <directory>tests/DTO</directory>
         </testsuite>
     </testsuites>
     <logging>
