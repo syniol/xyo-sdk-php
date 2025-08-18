@@ -1,6 +1,9 @@
 FROM php:7.1.33-alpine
 
+ARG PACKAGIST_TOKEN=$PACKAGIST_TOKEN
+
 RUN apk add --update \
+    curl \
     git \
     unzip \
     libzip-dev \
@@ -31,3 +34,5 @@ WORKDIR /usr/local/xyo/sdk
 COPY . /usr/local/xyo/sdk/
 
 RUN composer test
+
+RUN curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=syniol&apiToken='$PACKAGIST_TOKEN -d'{"repository":{"url":"https://github.com/syniol/xyo-sdk-php"}}' | exit 1
