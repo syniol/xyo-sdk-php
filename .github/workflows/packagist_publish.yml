@@ -13,8 +13,8 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      # Setup .npmrc file to publish to GitHub Packages
-      - name: Build Dockerfiles
+
+      - name: Update Packagist
         env:
           PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
         run: curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=syniol&apiToken=$PACKAGIST_TOKEN' -d'{"repository":{"url":"https://github.com/syniol/xyo-sdk-php"}}'
