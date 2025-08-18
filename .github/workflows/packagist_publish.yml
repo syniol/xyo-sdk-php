@@ -24,9 +24,10 @@ jobs:
         env:
           PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
         run: |
-          sudo apt-get remove curl
-          sudo apt-get install curl
-          curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=syniol&apiToken='$PACKAGIST_TOKEN -d'{"repository":{"url":"https://github.com/syniol/xyo-sdk-php"}}' | exit 1
+          curl -X POST \
+          -H 'content-type:application/json' \
+          'https://packagist.org/api/update-package?username=syniol&apiToken='$PACKAGIST_TOKEN \
+          -d'{"repository":{"url":"https://github.com/syniol/xyo-sdk-php"}}' | exit 1
 
 
 
