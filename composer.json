@@ -1,6 +1,6 @@
 {
   "name": "xyo/sdk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "XYO Financial Official SDK for PHP",
   "type": "library",
   "scripts": {
