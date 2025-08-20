@@ -9,7 +9,12 @@ class ClientConfig
     /**
      * @var string
      */
-    private static $ApiPath = 'https://api.xyo.financial';
+    public const API_PATH = 'https://api.xyo.financial';
+
+    /**
+     * @var int
+     */
+    public const DEFAULT_SUCCESS_STATUS_CODE = 200;
 
     /**
      * @var HttpClient
@@ -29,11 +34,6 @@ class ClientConfig
             'Accept' => 'application/json',
             'Authorization' => sprintf('Bearer %s', $apiKey)
         ];
-    }
-
-    public static function getApiPath(): string
-    {
-        return self::$ApiPath;
     }
 
     public function getHttpClient(): HttpClient
