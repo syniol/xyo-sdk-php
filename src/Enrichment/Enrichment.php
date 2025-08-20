@@ -16,7 +16,7 @@ interface Enrichment
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse;
 
     /**
-     * @param EnrichmentResponse[] $req
+     * @param EnrichmentRequest[] $req
      * @throws ClientException
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse;

@@ -54,7 +54,7 @@ class EnrichmentService implements Enrichment
     }
 
     /**
-     * @param EnrichmentResponse[] $req
+     * @param EnrichmentRequest[] $req
      * @throws ClientException
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
