@@ -2,6 +2,7 @@
 
 namespace XYO\SDK;
 
+use \Throwable;
 use XYO\SDK\Enrichment\Enrichment;
 use XYO\SDK\Enrichment\EnrichmentService;
 use XYO\SDK\Enrichment\DTO\EnrichmentCollectionStatusResponse;
@@ -46,33 +47,31 @@ class Client implements Enrichment
         $this->enrichment = new EnrichmentService($clientConfig);
     }
 
-    public function getEnrichment(): Enrichment
-    {
-        return $this->enrichment;
-    }
-
     /**
      * @throws ClientException
+     * @throws Throwable
      */
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
     {
-        return $this->getEnrichment()->enrichTransaction($req);
+        return $this->enrichment->enrichTransaction($req);
     }
 
     /**
      * @param EnrichmentRequest[] $req
      * @throws ClientException
+     * @throws Throwable
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
     {
-        return $this->getEnrichment()->enrichTransactionCollection($req);
+        return $this->enrichment->enrichTransactionCollection($req);
     }
 
     /**
      * @throws ClientException
+     * @throws Throwable
      */
     public function enrichTransactionCollectionStatus(string $id): EnrichmentCollectionStatusResponse
     {
-        return $this->getEnrichment()->enrichTransactionCollectionStatus($id);
+        return $this->enrichment->enrichTransactionCollectionStatus($id);
     }
 }
