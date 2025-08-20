@@ -24,7 +24,7 @@ jobs:
         env:
           PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
         run: |
-          curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=syniol&apiToken=RandomAPIKeyforDebug' -d'{"repository":{"url":"https://github.com/syniol/xyo-sdk-php"}}' | exit 1
+          curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=syniol&apiToken=RandomAPIKeyforDebug' -d'{"repository":{"url":"https://github.com/syniol/xyo-sdk-php"}}'
 
 
 
