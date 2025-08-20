@@ -1,7 +1,5 @@
 FROM php:7.1.33-alpine
 
-ARG PACKAGIST_TOKEN=$PACKAGIST_TOKEN
-
 RUN apk add --update \
     curl \
     git \
@@ -18,7 +16,7 @@ RUN apk add --update \
     && docker-php-ext-install bz2 \
     && docker-php-ext-install zip
 
-# Installing curl (PHP Package Management)
+# Installing Composer (PHP Package Management)
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer --version
 
@@ -34,3 +32,7 @@ WORKDIR /usr/local/xyo/sdk
 COPY . /usr/local/xyo/sdk/
 
 RUN composer test
+
+# Testing SDK in example package
+WORKDIR /example
+RUN composer start

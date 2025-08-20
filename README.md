@@ -12,7 +12,7 @@ __Create a Client__:
 ```php
 use XYO\SDK\Client;
 use XYO\SDK\ClientConfig;
-use XYO\SDK\Enrichment\dto\EnrichmentRequest;
+use XYO\SDK\Enrichment\DTO\EnrichmentRequest;
 
 $client = new Client(new ClientConfig("YourAPIKeyFromXYO.FinancialDashboard"))
 ```
