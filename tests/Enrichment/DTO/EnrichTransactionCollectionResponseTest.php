@@ -20,7 +20,8 @@ class EnrichTransactionCollectionResponseTest extends TestCase
         );
     }
 
-    public function testShouldBeInstantiable(): void {
+    public function testShouldBeInstantiable(): void
+    {
         $this->assertInstanceOf(EnrichTransactionCollectionResponse::class, $this->sut);
     }
 
