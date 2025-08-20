@@ -2,6 +2,7 @@
 
 namespace XYO\SDK\Enrichment;
 
+use \Throwable;
 use GuzzleHttp;
 use XYO\SDK\ClientException;
 use XYO\SDK\ClientConfig;
@@ -23,11 +24,12 @@ class EnrichmentService implements Enrichment
     }
 
     /**
-     * @throws ClientException
+     * @throws Throwable
      */
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
     {
-        $resp = $this->clientConfig->getHttpClient()->post(
+        $resp = $this->clientConfig->getHttpClient()->request(
+            'POST',
             sprintf("%s/v1/ai/finance/enrichment/transaction", ClientConfig::API_PATH),
             [
                 'headers' => $this->clientConfig->getHttpClientHeaders(),
@@ -43,7 +45,7 @@ class EnrichmentService implements Enrichment
             );
         }
 
-        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents());
+        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents(), true);
 
         return new EnrichmentResponse(
             $responseBody['merchant'],
@@ -55,11 +57,12 @@ class EnrichmentService implements Enrichment
 
     /**
      * @param EnrichmentRequest[] $req
-     * @throws ClientException
+     * @throws Throwable
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
     {
-        $resp = $this->clientConfig->getHttpClient()->post(
+        $resp = $this->clientConfig->getHttpClient()->request(
+            'POST',
             sprintf("%s/v1/ai/finance/enrichment/transactions", ClientConfig::API_PATH),
             [
                 'headers' => $this->clientConfig->getHttpClientHeaders(),
@@ -75,7 +78,7 @@ class EnrichmentService implements Enrichment
             );
         }
 
-        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents());
+        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents(), true);
 
         return new EnrichTransactionCollectionResponse(
             $responseBody['id'],
@@ -85,10 +88,12 @@ class EnrichmentService implements Enrichment
 
     /**
      * @throws ClientException
+     * @throws Throwable
      */
     public function enrichTransactionCollectionStatus(string $id): EnrichmentCollectionStatusResponse
     {
-        $resp = $this->clientConfig->getHttpClient()->get(
+        $resp = $this->clientConfig->getHttpClient()->request(
+            'GET',
             sprintf(
                 "%s/v1/ai/finance/enrichment/transactions/status/%s",
                 ClientConfig::API_PATH,
@@ -107,7 +112,7 @@ class EnrichmentService implements Enrichment
             );
         }
 
-        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents());
+        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents(), true);
 
         return new EnrichmentCollectionStatusResponse($responseBody['status']);
     }

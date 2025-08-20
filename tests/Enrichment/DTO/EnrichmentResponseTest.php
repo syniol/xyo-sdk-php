@@ -22,7 +22,8 @@ class EnrichmentResponseTest extends TestCase
         );
     }
 
-    public function testShouldBeInstantiable(): void {
+    public function testShouldBeInstantiable(): void
+    {
         $this->assertInstanceOf(EnrichmentResponse::class, $this->sut);
     }
 

@@ -2,6 +2,7 @@
 
 namespace XYO\SDK;
 
+use \Throwable;
 use XYO\SDK\Enrichment\Enrichment;
 use XYO\SDK\Enrichment\EnrichmentService;
 use XYO\SDK\Enrichment\DTO\EnrichmentCollectionStatusResponse;
@@ -48,6 +49,7 @@ class Client implements Enrichment
 
     /**
      * @throws ClientException
+     * @throws Throwable
      */
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
     {
@@ -57,6 +59,7 @@ class Client implements Enrichment
     /**
      * @param EnrichmentRequest[] $req
      * @throws ClientException
+     * @throws Throwable
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
     {
@@ -65,6 +68,7 @@ class Client implements Enrichment
 
     /**
      * @throws ClientException
+     * @throws Throwable
      */
     public function enrichTransactionCollectionStatus(string $id): EnrichmentCollectionStatusResponse
     {

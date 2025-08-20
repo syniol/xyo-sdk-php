@@ -20,7 +20,8 @@ class EnrichmentRequestTest extends TestCase
         );
     }
 
-    public function testShouldBeInstantiable(): void {
+    public function testShouldBeInstantiable(): void
+    {
         $this->assertInstanceOf(EnrichmentRequest::class, $this->sut);
     }
 

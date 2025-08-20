@@ -1,12 +1,16 @@
 {
   "name": "xyo/sdk",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "XYO Financial Official SDK for PHP",
   "type": "library",
   "scripts": {
     "test": [
       "@composer install",
       "phpunit ./tests --no-coverage"
+    ],
+    "test-dev": [
+      "@composer install",
+      "phpunit ./tests --coverage-html ./coverage"
     ]
   },
   "scripts-descriptions": {
