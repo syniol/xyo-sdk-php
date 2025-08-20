@@ -36,19 +36,12 @@ use XYO\SDK\Enrichment\DTO\EnrichTransactionCollectionResponse;
 class Client implements Enrichment
 {
     /**
-     * @var ClientConfig
-     */
-    private $clientConfig;
-
-    /**
      * @var Enrichment
      */
     private $enrichment;
 
     public function __construct(ClientConfig $clientConfig)
     {
-        $this->clientConfig = $clientConfig;
-
         // All Services such as enrichment should implement interface and assigned here
         $this->enrichment = new EnrichmentService($clientConfig);
     }
