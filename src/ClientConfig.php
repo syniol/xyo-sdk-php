@@ -12,11 +12,6 @@ class ClientConfig
     private static $ApiPath = 'https://api.xyo.financial';
 
     /**
-     * @var string
-     */
-    private $apiKey;
-
-    /**
      * @var HttpClient
      */
     private $httpClient;
@@ -28,12 +23,11 @@ class ClientConfig
 
     public function __construct(string $apiKey)
     {
-        $this->apiKey = $apiKey;
         $this->httpClient = new HttpClient();
         $this->httpClientHeaders = [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-            'Authorization' => sprintf('Bearer %s', $this->apiKey)
+            'Authorization' => sprintf('Bearer %s', $apiKey)
         ];
     }
 
