@@ -22,6 +22,10 @@ class EnrichmentResponseTest extends TestCase
         );
     }
 
+    public function testShouldBeInstantiable(): void {
+        $this->assertInstanceOf(EnrichmentResponse::class, $this->sut);
+    }
+
     public function testShouldHaveMerchantName(): void
     {
         $this->assertEquals('Costa Coffee', $this->sut->merchant);
@@ -42,7 +46,7 @@ class EnrichmentResponseTest extends TestCase
         $this->assertEquals('base64/encoded string mostly png', $this->sut->logo);
     }
 
-    public function testShouldEncodeSingleEnrichmentRequestToJSONResponse(): void
+    public function testShouldEncodeToJSONContainingAllPublicProperties(): void
     {
         $this->assertEquals(
             '{"merchant":"Costa Coffee","description":"Coffee house","categories":["coffee","lunch","cake"],"logo":"base64\/encoded string mostly png"}',

@@ -26,7 +26,7 @@ class EnrichmentCollectionStatusResponseTest extends TestCase
         $this->assertEquals(EnrichmentCollectionStatusResponse::$EnrichmentCollectionStatusReady, $this->sut->status);
     }
 
-    public function testShouldEncodeSingleEnrichmentRequestToJSONResponse(): void
+    public function testShouldEncodeToJSONContainingAllPublicProperties(): void
     {
         $this->assertEquals(
             sprintf('{"status":"%s"}', EnrichmentCollectionStatusResponse::$EnrichmentCollectionStatusReady),
