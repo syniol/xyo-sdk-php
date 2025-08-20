@@ -14,7 +14,9 @@ class EnrichmentCollectionStatusResponseTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->sut = new EnrichmentCollectionStatusResponse(EnrichmentCollectionStatusResponse::$EnrichmentCollectionStatusReady);
+        $this->sut = new EnrichmentCollectionStatusResponse(
+            EnrichmentCollectionStatusResponse::EnrichmentCollectionStatusReady
+        );
     }
 
     public function testShouldBeInstantiable(): void {
@@ -23,13 +25,16 @@ class EnrichmentCollectionStatusResponseTest extends TestCase
 
     public function testShouldHaveStatusCode(): void
     {
-        $this->assertEquals(EnrichmentCollectionStatusResponse::$EnrichmentCollectionStatusReady, $this->sut->status);
+        $this->assertEquals(
+            EnrichmentCollectionStatusResponse::EnrichmentCollectionStatusReady,
+            $this->sut->status
+        );
     }
 
     public function testShouldEncodeToJSONContainingAllPublicProperties(): void
     {
         $this->assertEquals(
-            sprintf('{"status":"%s"}', EnrichmentCollectionStatusResponse::$EnrichmentCollectionStatusReady),
+            sprintf('{"status":"%s"}', EnrichmentCollectionStatusResponse::EnrichmentCollectionStatusReady),
             json_encode($this->sut),
             'should encode to JSON'
         );

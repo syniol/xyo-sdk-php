@@ -28,7 +28,7 @@ class EnrichmentService implements Enrichment
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
     {
         $resp = $this->clientConfig->getHttpClient()->post(
-            sprintf("%s/v1/ai/finance/enrichment/transaction", ClientConfig::getApiPath()),
+            sprintf("%s/v1/ai/finance/enrichment/transaction", ClientConfig::API_PATH),
             [
                 'headers' => $this->clientConfig->getHttpClientHeaders(),
                 'body' => GuzzleHttp\json_encode($req)
@@ -36,7 +36,7 @@ class EnrichmentService implements Enrichment
         );
 
         $httpStatusCode = $resp->getStatusCode();
-        if ($httpStatusCode !== 200) {
+        if ($httpStatusCode !== ClientConfig::DEFAULT_SUCCESS_STATUS_CODE) {
             throw ClientException::ExceptionFromHttpStatusCode(
                 $httpStatusCode,
                 $resp->getBody()->getContents()
@@ -54,13 +54,13 @@ class EnrichmentService implements Enrichment
     }
 
     /**
-     * @param EnrichmentResponse[] $req
+     * @param EnrichmentRequest[] $req
      * @throws ClientException
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
     {
         $resp = $this->clientConfig->getHttpClient()->post(
-            sprintf("%s/v1/ai/finance/enrichment/transactions", ClientConfig::getApiPath()),
+            sprintf("%s/v1/ai/finance/enrichment/transactions", ClientConfig::API_PATH),
             [
                 'headers' => $this->clientConfig->getHttpClientHeaders(),
                 'body' => GuzzleHttp\json_encode($req)
@@ -68,7 +68,7 @@ class EnrichmentService implements Enrichment
         );
 
         $httpStatusCode = $resp->getStatusCode();
-        if ($httpStatusCode !== 200) {
+        if ($httpStatusCode !== ClientConfig::DEFAULT_SUCCESS_STATUS_CODE) {
             throw ClientException::ExceptionFromHttpStatusCode(
                 $httpStatusCode,
                 $resp->getBody()->getContents()
@@ -91,7 +91,7 @@ class EnrichmentService implements Enrichment
         $resp = $this->clientConfig->getHttpClient()->get(
             sprintf(
                 "%s/v1/ai/finance/enrichment/transactions/status/%s",
-                ClientConfig::getApiPath(),
+                ClientConfig::API_PATH,
                 $id
             ),
             [
@@ -100,7 +100,7 @@ class EnrichmentService implements Enrichment
         );
 
         $httpStatusCode = $resp->getStatusCode();
-        if ($httpStatusCode !== 200) {
+        if ($httpStatusCode !== ClientConfig::DEFAULT_SUCCESS_STATUS_CODE) {
             throw ClientException::ExceptionFromHttpStatusCode(
                 $httpStatusCode,
                 $resp->getBody()->getContents()

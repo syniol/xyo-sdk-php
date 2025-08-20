@@ -36,44 +36,14 @@ use XYO\SDK\Enrichment\DTO\EnrichTransactionCollectionResponse;
 class Client implements Enrichment
 {
     /**
-     * @var ClientConfig
-     */
-    private $clientConfig;
-
-    /**
      * @var Enrichment
      */
     private $enrichment;
 
     public function __construct(ClientConfig $clientConfig)
     {
-        $this->clientConfig = $clientConfig;
-
         // All Services such as enrichment should implement interface and assigned here
         $this->enrichment = new EnrichmentService($clientConfig);
-    }
-
-    /**
-     * @throws ClientException
-     */
-    public function getHeath(): bool
-    {
-        $resp = $this->clientConfig->getHttpClient()->get(
-            sprintf("%s/healthz", ClientConfig::getApiPath()),
-            [
-                'headers' => $this->clientConfig->getHttpClientHeaders(),
-            ]
-        );
-
-        $httpStatusCode = $resp->getStatusCode();
-        if ($httpStatusCode !== 200) {
-            throw ClientException::ExceptionFromHttpStatusCode(
-                $httpStatusCode,
-                $resp->getBody()->getContents()
-            );
-        }
-
-        return true;
     }
 
     /**
@@ -85,7 +55,7 @@ class Client implements Enrichment
     }
 
     /**
-     * @param EnrichmentResponse[] $req
+     * @param EnrichmentRequest[] $req
      * @throws ClientException
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
