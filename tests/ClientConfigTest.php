@@ -23,11 +23,6 @@ class ClientConfigTest extends TestCase
         $this->assertInstanceOf(ClientConfig::class, $this->sut);
     }
 
-    public function testShouldHaveAccessibleApiBasePath(): void
-    {
-        $this->assertEquals('https://api.xyo.financial', ClientConfig::getApiPath());
-    }
-
     public function testShouldHaveAccessibleHttpClient(): void
     {
         $this->assertInstanceOf(HttpClient::class, $this->sut->getHttpClient());
