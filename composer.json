@@ -7,6 +7,10 @@
     "test": [
       "@composer install",
       "phpunit ./tests --no-coverage"
+    ],
+    "test-dev": [
+      "@composer install",
+      "phpunit ./tests --coverage-html ./coverage"
     ]
   },
   "scripts-descriptions": {

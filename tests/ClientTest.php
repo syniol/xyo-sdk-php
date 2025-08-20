@@ -11,6 +11,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\MessageInterface;
 use XYO\SDK\ClientException;
 use XYO\SDK\Enrichment\DTO\EnrichmentRequest;
+use XYO\SDK\Enrichment\DTO\EnrichmentResponse;
+use XYO\SDK\Enrichment\EnrichmentService;
 
 class ClientTest extends TestCase
 {
@@ -39,46 +41,8 @@ class ClientTest extends TestCase
         $this->assertInstanceOf(Client::class, $this->sut);
     }
 
-    public function _testShouldThrowExceptionWhenEnrichTransactionReturnsNonSuccessfulStatusCode(): void
+    public function _testShouldExecuteEnrichTransaction(): void
     {
-//        $this->expectException(ClientException::class);
-        $mockedHttpResponse = $this
-            ->getMockBuilder(ResponseInterface::class)
-            ->setMockClassName('Response')
-            ->getMock();
-
-        $mockedHttpResponse
-            ->expects($this->once())
-            ->method('getStatusCode')
-            ->willReturn(400);
-
-
-
-        $mockedHttpResponse
-            ->expects($this->once())
-            ->method('getBody')
-            ->willReturn($mockedBody);
-
-        $mockedBody = $this
-            ->getMockBuilder(MessageInterface::class)
-            ->setMockClassName('Message')
-            ->getMock();
-
-        $mockedBody
-            ->expects($this->once())
-            ->method('getContents')
-            ->willReturn('errorsssss');
-
-        $this->httpClient
-            ->expects($this->once())
-            ->method('request')
-            ->willReturn($mockedHttpResponse);
-
-        $this->sut->enrichTransaction(new EnrichmentRequest('Syniol Tech', 'GB'));
-
-//        $this->clientConfig
-//            ->expects($this->once())
-//            ->method('getHttpClientHeaders')
-//            ->willReturn(['Content-Type' => 'application/json']);
+        $this->sut->enrichTransaction(new EnrichmentRequest('sssdsdda', 'GB'));
     }
 }

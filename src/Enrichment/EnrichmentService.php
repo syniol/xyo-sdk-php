@@ -45,7 +45,7 @@ class EnrichmentService implements Enrichment
             );
         }
 
-        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents());
+        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents(), true);
 
         return new EnrichmentResponse(
             $responseBody['merchant'],
@@ -78,7 +78,7 @@ class EnrichmentService implements Enrichment
             );
         }
 
-        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents());
+        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents(), true);
 
         return new EnrichTransactionCollectionResponse(
             $responseBody['id'],
@@ -112,7 +112,7 @@ class EnrichmentService implements Enrichment
             );
         }
 
-        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents());
+        $responseBody = GuzzleHttp\json_decode($resp->getBody()->getContents(), true);
 
         return new EnrichmentCollectionStatusResponse($responseBody['status']);
     }

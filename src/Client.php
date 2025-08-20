@@ -46,12 +46,17 @@ class Client implements Enrichment
         $this->enrichment = new EnrichmentService($clientConfig);
     }
 
+    public function getEnrichment(): Enrichment
+    {
+        return $this->enrichment;
+    }
+
     /**
      * @throws ClientException
      */
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
     {
-        return $this->enrichment->enrichTransaction($req);
+        return $this->getEnrichment()->enrichTransaction($req);
     }
 
     /**
@@ -60,7 +65,7 @@ class Client implements Enrichment
      */
     public function enrichTransactionCollection(array $req): EnrichTransactionCollectionResponse
     {
-        return $this->enrichment->enrichTransactionCollection($req);
+        return $this->getEnrichment()->enrichTransactionCollection($req);
     }
 
     /**
@@ -68,6 +73,6 @@ class Client implements Enrichment
      */
     public function enrichTransactionCollectionStatus(string $id): EnrichmentCollectionStatusResponse
     {
-        return $this->enrichment->enrichTransactionCollectionStatus($id);
+        return $this->getEnrichment()->enrichTransactionCollectionStatus($id);
     }
 }
