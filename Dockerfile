@@ -34,5 +34,5 @@ COPY . /usr/local/xyo/sdk/
 RUN composer test
 
 # Testing SDK in example package
-WORKDIR /example
+WORKDIR /usr/local/xyo/sdk/example
 RUN composer start
