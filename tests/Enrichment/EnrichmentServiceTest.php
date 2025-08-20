@@ -3,16 +3,15 @@
 namespace Tests\Enrichment;
 
 use GuzzleHttp\Client as HttpClient;
+use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\StreamInterface;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
 use XYO\SDK\ClientConfig;
 use XYO\SDK\ClientException;
+use XYO\SDK\Enrichment\EnrichmentService;
 use XYO\SDK\Enrichment\DTO\EnrichmentRequest;
 use XYO\SDK\Enrichment\DTO\EnrichmentResponse;
-use XYO\SDK\Enrichment\EnrichmentService;
 
 class EnrichmentServiceTest extends TestCase
 {
@@ -89,8 +88,8 @@ class EnrichmentServiceTest extends TestCase
         $responseInterfaceMock = $this
             ->getMockBuilder(ResponseInterface::class)
             ->getMock();
-
         $responseInterfaceMock
+            ->expects($this->once())
             ->method('getStatusCode')
             ->willReturn(200);
 
@@ -98,14 +97,16 @@ class EnrichmentServiceTest extends TestCase
             ->getMockBuilder(StreamInterface::class)
             ->getMock();
         $streamInterfaceMock
+            ->expects($this->once())
             ->method('getContents')
             ->willReturn('{"merchant":"Syniol", "description":"","logo":"","categories":[""]}');
-
         $responseInterfaceMock
+            ->expects($this->once())
             ->method('getBody')
             ->willReturn($streamInterfaceMock);
 
-        $httpClientMock->expects($this->once())
+        $httpClientMock
+            ->expects($this->once())
             ->method('request')
             ->willReturn($responseInterfaceMock);
 
