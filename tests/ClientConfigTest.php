@@ -3,6 +3,7 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
+use GuzzleHttp\Client as HttpClient;
 use XYO\SDK\ClientConfig;
 
 class ClientConfigTest extends TestCase
@@ -20,5 +21,24 @@ class ClientConfigTest extends TestCase
     public function testShouldBeInstantiable(): void
     {
         $this->assertInstanceOf(ClientConfig::class, $this->sut);
+    }
+
+    public function testShouldHaveAccessibleApiBasePath(): void
+    {
+        $this->assertEquals('https://api.xyo.financial', ClientConfig::getApiPath());
+    }
+
+    public function testShouldHaveAccessibleHttpClient(): void
+    {
+        $this->assertInstanceOf(HttpClient::class, $this->sut->getHttpClient());
+    }
+
+    public function testShouldHaveHttpClientHeadersIncludingAuthorizationAPIKey(): void
+    {
+        $this->assertEquals([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Authorization' => sprintf('Bearer %s', 'ApiKeyForUniTest')
+        ], $this->sut->getHttpClientHeaders());
     }
 }

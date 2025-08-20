@@ -15,8 +15,8 @@
         <testsuite name="Main">
             <directory>tests/</directory>
         </testsuite>
-        <testsuite name="DTO">
-            <directory>tests/DTO</directory>
+        <testsuite name="Enrichment">
+            <directory>tests/Enrichment</directory>
         </testsuite>
     </testsuites>
     <logging>

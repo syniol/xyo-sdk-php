@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\DTO;
+namespace Tests\Enrichment\DTO;
 
 use PHPUnit\Framework\TestCase;
 use XYO\SDK\Enrichment\DTO\EnrichmentRequest;
@@ -24,11 +24,20 @@ class EnrichmentRequestTest extends TestCase
         $this->assertInstanceOf(EnrichmentRequest::class, $this->sut);
     }
 
-    public function testShouldEncodeToJSONResponse(): void
+    public function testShouldEncodeSingleEnrichmentRequestToJSONResponse(): void
     {
         $this->assertEquals(
             '{"content":"COSTA PICKUP","countryCode":"GB"}',
             json_encode($this->sut),
+            'should encode to JSON response'
+        );
+    }
+
+    public function testShouldEncodeCollectionEnrichmentRequestToJSONResponse(): void
+    {
+        $this->assertEquals(
+            '[{"content":"COSTA PICKUP","countryCode":"GB"},{"content":"COSTA PICKUP","countryCode":"GB"}]',
+            json_encode([$this->sut, $this->sut]),
             'should encode to JSON response'
         );
     }
