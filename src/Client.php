@@ -56,29 +56,6 @@ class Client implements Enrichment
     /**
      * @throws ClientException
      */
-    public function getHeath(): bool
-    {
-        $resp = $this->clientConfig->getHttpClient()->get(
-            sprintf("%s/healthz", ClientConfig::getApiPath()),
-            [
-                'headers' => $this->clientConfig->getHttpClientHeaders(),
-            ]
-        );
-
-        $httpStatusCode = $resp->getStatusCode();
-        if ($httpStatusCode !== 200) {
-            throw ClientException::ExceptionFromHttpStatusCode(
-                $httpStatusCode,
-                $resp->getBody()->getContents()
-            );
-        }
-
-        return true;
-    }
-
-    /**
-     * @throws ClientException
-     */
     public function enrichTransaction(EnrichmentRequest $req): EnrichmentResponse
     {
         return $this->enrichment->enrichTransaction($req);
