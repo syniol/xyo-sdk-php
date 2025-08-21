@@ -1,7 +1,26 @@
 {
   "name": "xyo/sdk",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "XYO Financial Official SDK for PHP",
+  "authors": [
+    {
+      "name": "Syniol Limited",
+      "email": "hadi@syniol.com",
+      "homepage": "https://syniol.com",
+      "role": "Author"
+    }
+  ],
+  "keywords": [
+    "XYO.financial",
+    "SDK",
+    "Bank Transaction",
+    "Enrichment",
+    "AI"
+  ],
+  "homepage": "https://xyo.financial",
+  "support": {
+    "issues": "https://github.com/syniol/xyo-sdk-php/issues"
+  },
   "type": "library",
   "scripts": {
     "test": [
@@ -31,13 +50,5 @@
       "Tests\\": "tests/"
     }
   },
-  "authors": [
-    {
-      "name": "Syniol Limited",
-      "email": "hadi@syniol.com",
-      "homepage": "https://syniol.com",
-      "role": "Author"
-    }
-  ],
   "minimum-stability": "stable"
 }
