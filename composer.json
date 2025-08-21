@@ -1,10 +1,11 @@
 {
   "name": "xyo/sdk",
   "version": "1.0.0",
+  "type": "library",
   "description": "XYO Financial Official SDK for PHP",
   "authors": [
     {
-      "name": "Syniol Limited",
+      "name": "Hadi Tajallaei",
       "email": "hadi@syniol.com",
       "homepage": "https://syniol.com",
       "role": "Author"
@@ -21,7 +22,6 @@
   "support": {
     "issues": "https://github.com/syniol/xyo-sdk-php/issues"
   },
-  "type": "library",
   "scripts": {
     "test": [
       "@composer install",
