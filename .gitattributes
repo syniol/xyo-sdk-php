@@ -7,3 +7,4 @@ phpunit.xml export-ignore
 .dockerignore export-ignore
 tests export-ignore
 example export-ignore
+docs export-ignore
