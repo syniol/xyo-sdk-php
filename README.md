@@ -2,7 +2,7 @@
 ![workflow](https://github.com/syniol/xyo-sdk-php/actions/workflows/makefile.yml/badge.svg)    ![workflow](https://github.com/syniol/xyo-sdk-php/actions/workflows/packagist_publish.yml/badge.svg)
 
 <p align="center">
-    <a href="https://xyo.financial" target="blank"><img alt="crab mascot" width="50%" src="https://github.com/syniol/xyo-sdk-php/blob/main/docs/mascot.png?raw=true" /></a>
+    <a href="https://xyo.financial" target="blank"><img alt="PHP (Elephant) Mascot" width="50%" src="https://github.com/syniol/xyo-sdk-php/blob/main/docs/mascot.png?raw=true" /></a>
 </p>
 
 This is an official SDK of XYO Financial for PHP Programming Language. 
